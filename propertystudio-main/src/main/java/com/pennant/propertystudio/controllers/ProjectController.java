@@ -17,6 +17,9 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+     @Autowired
+     ProjectTypes projectType;
+
     @GetMapping("/addProject")
     public String showAddProjectForm(Model model) {
         model.addAttribute("project", new Project());
@@ -25,8 +28,7 @@ public class ProjectController {
 
     @PostMapping("/addProject")
     public String addProject(@ModelAttribute Project project, Model model) {
-    	 // Set proj_prty_id to 1 as mentioned
-        ProjectTypes projectType = new ProjectTypes();
+    	
         projectType.setPrtyId(1);
         project.setProjectType(projectType);
         // Save the project to the database
